@@ -35,6 +35,23 @@ Create rules to open ports to the internet, or to a specific IPv4 address or ran
 - portainer: 9001
 - phpmyadmin: 9090
 
+#### Magento authentication keys
+
+The repo.magento.com repository is where Adobe Commerce and Magento Open Source and third-party Composer packages are stored and requires authentication.
+Use your Commerce Marketplace account to generate a pair of 32-character authentication keys to access the repository
+
+Get your authentication keys: [https://experienceleague.adobe.com/docs/commerce-operations/installation-guide/prerequisites/authentication-keys.html?lang=en](https://experienceleague.adobe.com/docs/commerce-operations/installation-guide/prerequisites/authentication-keys.html?lang=en)
+
+#### How you set vm.max_map_count depends on your platform
+
+The following requirements and recommendations apply when running Elasticsearch in Docker in production.
+
+[https://www.elastic.co/guide/en/elasticsearch/reference/8.5/docker.html#_set_vm_max_map_count_to_at_least_262144](https://www.elastic.co/guide/en/elasticsearch/reference/8.5/docker.html#_set_vm_max_map_count_to_at_least_262144)
+
+#### 2 GB RAM
+
+Upgrading the applications and extensions you obtain from the Commerce Marketplace and other sources can require up to 2 GB of RAM. If you are using a system with less than 2 GB of RAM, we recommend you create a [swap file](https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-20-04); otherwise, your upgrade might fail.
+
 #### Contents:
 
 - [Auto Configuration and Installation](#automatic)
