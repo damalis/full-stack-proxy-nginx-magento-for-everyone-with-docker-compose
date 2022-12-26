@@ -58,7 +58,7 @@ services:
         restart: unless-stopped
         ports:
             - '8070:80'
-            - '81:81'
+            - '90:90'
             - '8090:8090'
         links:
             - magento
