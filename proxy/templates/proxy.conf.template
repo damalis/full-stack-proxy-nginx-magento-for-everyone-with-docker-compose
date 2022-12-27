@@ -65,10 +65,6 @@ server {
 		proxy_set_header Proxy "";        
 	}
 	#
-	location ~ /.well-known {
-		allow all;
-	}
-	#
 	access_log off;
 	error_log  /var/log/nginx/${NGINX_HOST}.error.log error;
 }
