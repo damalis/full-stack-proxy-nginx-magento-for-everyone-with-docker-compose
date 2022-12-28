@@ -71,9 +71,15 @@ server {
 
 server {
 	#listen 443 ssl http2;
+	#listen [::]:443 ipv6only=on ssl http2;
 	#
 	#server_name mail.${NGINX_HOST};
 	#
+	#ssl_certificate /etc/letsencrypt/live/${NGINX_HOST}/fullchain.pem;
+	#ssl_certificate_key /etc/letsencrypt/live/${NGINX_HOST}/privkey.pem;
+	#ssl_trusted_certificate /etc/letsencrypt/live/${NGINX_HOST}/chain.pem;
+	#ssl_dhparam /etc/letsencrypt/ssl-dhparam.pem;
+	include /etc/letsencrypt/options-ssl-nginx.conf;
 	
 	location / {		
 		proxy_pass	http://docker_mail;		
