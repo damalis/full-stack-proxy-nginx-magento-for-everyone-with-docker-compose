@@ -64,9 +64,6 @@ services:
             - '90:90'
             - '8090:8090'
         links:
-            - magento
-            - varnish
-            - elasticsearch
             - mail
         environment:
             TZ: '${LOCAL_TIMEZONE}'
