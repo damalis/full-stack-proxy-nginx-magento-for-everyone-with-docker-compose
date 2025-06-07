@@ -69,7 +69,7 @@ services:
 
     certbot:
         depends_on:
-            - varnish
+            - webserver
         image: certbot/certbot:latest
         container_name: certbot
         networks:
@@ -186,10 +186,13 @@ services:
               source: ./database/conf.d/z-${DATABASE_IMAGE_NAME}.cnf
               target: '${MYSQL_CONF_PREFIX}/z-${DATABASE_IMAGE_NAME}.cnf'
             - 'phpmyadmin-sql:/docker-entrypoint-initdb.d'
+            - '/sys/fs/cgroup/memory.pressure:/sys/fs/cgroup/memory.pressure'
         hostname: database
         restart: unless-stopped
         ports:
             - '3306:3306'
+        security_opt:
+            - no-new-privileges:true
         healthcheck:
             test: ["CMD-SHELL", "${DATABASE_ADMIN_COMMANDLINE} ping --silent || exit 1"]
             interval: 5s
