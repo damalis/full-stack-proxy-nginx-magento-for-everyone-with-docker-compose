@@ -63,6 +63,11 @@ services:
             - '8090:8090'
         links:
             - mail
+        healthcheck:
+            test: ["CMD-SHELL", "/bin/pidof httpd > /dev/null || exit 1"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
         environment:
             TZ: '${LOCAL_TIMEZONE}'
         command: bash -c "sed -i 's/example.com/${DOMAIN_NAME}/g' ${HTTPD_PREFIX}/conf/extra/httpd-vhosts.conf && httpd -t; httpd-foreground"
