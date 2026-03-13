@@ -69,7 +69,7 @@ services:
 
     certbot:
         depends_on:
-            webserver:
+            proxy:
                 condition: service_healthy
         image: certbot/certbot:latest
         container_name: certbot
